@@ -1,1 +1,1 @@
-# go_playground
+Playing around with Go.
