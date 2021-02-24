@@ -14,7 +14,8 @@ func main() {
 	y := "world"
 	fmt.Println(x == y)
 
-	double()
+	fizzBuzz()
+
 }
 
 func double() {
@@ -23,4 +24,28 @@ func double() {
 	fmt.Scanf("%f", &input)
 	output := input * 2
 	fmt.Println(output)
+}
+
+func showTen() {
+	for i := 1; i <= 10; i++ {
+		if i % 2 == 0 {
+			fmt.Println(i, "even")
+		} else {
+			fmt.Println(i, "odd")
+		}
+	}
+}
+
+func fizzBuzz() {
+	for i := 0; i <= 100; i++ {
+		if i % 3 == 0 && i % 5 == 0 {
+			fmt.Println("FizzBuzz")
+		} else if i % 3 == 0 {
+			fmt.Println("Fizz")
+		} else if i % 5 == 0 {
+			fmt.Println("Buzz")
+		} else {
+			fmt.Println(i)
+		}
+	}
 }
