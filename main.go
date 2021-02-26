@@ -3,21 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello world!", len("Hello"))
-	fmt.Println("1 + 1 = ", 1 + 1)
-	fmt.Println("1.0 + 1.0 = ", 1.0 + 1.0)
-	fmt.Println("Hello"[1]) // shows 101 instead of e: it prints the byte for the character e.
-	fmt.Println(true && true)
-
-	const x string = "Hello"
-	fmt.Println(x)
-	y := "world"
-	fmt.Println(x == y)
-
-	averageArray()
-	sliceCopy()
-	mapsExcursions()
-	smallest()
+	fmt.Println(ch6Ex2(5))
+	fmt.Println(ch6Ex3(2, 3, 5, 1))
 }
 
 func double() {
@@ -59,31 +46,24 @@ func makeArray() {
 }
 
 func averageArray() {
-	var x [5]float64
+	var x = make([]float64, 5)
 	x[0] = 98
 	x[1] = 93
 	x[2] = 77
 	x[3] = 82
 	x[4] = 83
 
-	var total float64 = 0
-	for i := 0; i < len(x); i++ {
-		total += x[i]
-	}
+	fmt.Println(average(x))
+}
 
-	var y = [5]float64{
-		98,
-		93,
-		77,
-		82,
-		83,
-	}
 
-	for _, value := range y {
+func average(xs []float64) float64 {
+	total := 0.0
+	for _, value := range xs {
 		total += value
 	}
 
-	fmt.Println(total / float64(len(x) + len(y)))
+	return total / float64(len(xs))
 }
 
 func sliceAppend() {
@@ -126,4 +106,20 @@ func smallest() {
 	}
 
 	fmt.Println(smallest)
+}
+
+func ch6Ex2(x int) (int, bool) {
+	half := x / 2
+	return half, half % 2 == 0
+}
+
+func ch6Ex3(xs ...int) int {
+	var greatest int
+	for i, x := range xs {
+		if i == 0 || x > greatest {
+			greatest = x
+		}
+	}
+
+	return greatest
 }
