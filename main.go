@@ -3,8 +3,34 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(ch6Ex2(5))
-	fmt.Println(ch6Ex3(2, 3, 5, 1))
+	fmt.Println(firstUniqChar("ttijn"))
+}
+
+func firstUniqChar(s string) int {
+	indexesSeen := make(map[string]int)
+
+	for i, c := range s {
+		if _, present := indexesSeen[string(c)]; present {
+			indexesSeen[string(c)] = -1
+		} else {
+			indexesSeen[string(c)] = i
+		}
+	}
+
+	// find smallest index that is not -1.
+	smallestIndex := len(s)
+	for _, value := range indexesSeen {
+		if value > -1 && value < smallestIndex {
+			smallestIndex = value
+		}
+	}
+
+	// we have not found it
+	if len(s) == smallestIndex {
+		return -1
+	}
+
+	return smallestIndex
 }
 
 func double() {
