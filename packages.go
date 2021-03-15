@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func main() {
+func randomStuff() {
 	// strings package
 	fmt.Println(strings.Contains("stijn", "ij"))
 	fmt.Println(strings.Index("stijn", "i"))

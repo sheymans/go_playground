@@ -3,7 +3,37 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(firstUniqChar("ttijn"))
+}
+
+func twoSum(numbers []int, sum int) []int {
+	return twoSumWithAcc(numbers, sum, 0, make([]int, 0))
+}
+
+func twoSumWithAcc(numbers []int, sum int, current int, result []int) []int {
+	if current >= len(numbers) && sum == 0 {
+		return result
+	}
+
+	if current >= len(numbers) {
+		return nil
+	}
+
+	first := numbers[current]
+	if first > sum {
+		return twoSumWithAcc(numbers, sum, current + 1, result)
+	}
+
+	branch1 := twoSumWithAcc(numbers, sum, current + 1, result)
+	if branch1 != nil {
+		return branch1
+	}
+	newResult := append(result, current)
+	branch2 := twoSumWithAcc(numbers, sum - first, current + 1, newResult)
+	if branch2 != nil {
+		return branch2
+	}
+
+	return nil
 }
 
 func firstUniqChar(s string) int {
